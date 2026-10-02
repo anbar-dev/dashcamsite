@@ -10,6 +10,7 @@ const products = [
     parking: "Parking modes are available. Recording with the engine off requires a compatible hardwire kit, sold separately.",
     vehicle: "Its compact body can suit small cars and crowded windshields.",
     search: "VIOFO A119 Mini 2 dash cam", asin: null,
+    image: "https://m.media-amazon.com/images/I/713pqThfwnL._AC_SY300_SX300_QL70_FMwebp_.jpg",
     source: "https://www.viofo.com/products/viofo-a119-mini-2-voice-control-2k-60fps-5ghz-wifi-dash-camera-with-sony-starvis-2-image-sensor-hdr-super-night-sensibility"
   },
   {
@@ -21,6 +22,7 @@ const products = [
     parking: "Supports buffered parking recording. A compatible HK4 kit is required to power the camera with the car off.",
     vehicle: "For estates, SUVs, or vans, check the rear-camera cable length.",
     search: "VIOFO A229 Plus 2CH front rear dash cam", asin: null,
+    image: "https://m.media-amazon.com/images/I/71rtcpbZU-L._AC_SX425_.jpg",
     source: "https://www.viofo.com/products/viofo-a229-plus-2ch-front-and-rear-2k2k-hdr-5ghz-wi-fi-gps-voice-control-dual-dash-camera-with-sony-starvis-2-sensor"
   },
   {
@@ -32,6 +34,7 @@ const products = [
     parking: "Offers collision detection and time-lapse. Parking mode requires a compatible 70mai UP03/UP04 hardwire kit, sold separately.",
     vehicle: "Check that the bundle includes the rear camera and that its cable reaches your back window.",
     search: "70mai A510-1 front rear dash cam", asin: null,
+    image: "https://m.media-amazon.com/images/I/71P0+9q3SDL._AC_SY300_SX300_QL70_FMwebp_.jpg",
     source: "https://new-cdn-res.70mai.com/gb/a510/"
   },
   {
@@ -43,6 +46,7 @@ const products = [
     parking: "Supports buffered parking modes. VIOFO lists HK4 as compatible; it is optional, and the camera has a supercapacitor rather than a battery.",
     vehicle: "Suited to passenger transport or drivers who also need an interior view.",
     search: "VIOFO A229 Plus 3CH dash cam", asin: null,
+    image: "https://m.media-amazon.com/images/I/71st-hNqVML._AC_SY300_SX300_QL70_FMwebp_.jpg",
     source: "https://www.viofo.com/products/viofo-a229-plus-3ch-2k2k1080p-hdr-5ghz-wi-fi-gps-voice-control-dash-camera-with-dual-sony-starvis-2-sensor"
   },
   {
@@ -54,6 +58,7 @@ const products = [
     parking: "Supports buffered parking modes. VIOFO lists HK4 as compatible; it is optional, and off-engine recording needs a separate power source.",
     vehicle: "Check the space behind your mirror and cable routing for your car model.",
     search: "VIOFO A229 Pro 2CH 4K 2K dash cam", asin: null,
+    image: "https://m.media-amazon.com/images/I/717rmTFtSNL._AC_SX569_.jpg",
     source: "https://www.viofo.com/products/viofo-a229-pro-2ch-front-and-rear-4k-2k-hdr-dual-dash-cam-with-sony-starvis-2-sensors"
   }
 ];
@@ -70,6 +75,10 @@ function syncAmazonLinks(root = document) {
     const product = products.find(item => item.id === link.dataset.amazonProduct);
     if (product) link.href = amazonUrl(product);
   });
+}
+
+function productPhoto(product, className = "") {
+  return `<a class="product-photo-link ${className}" data-amazon-product="${product.id}" href="${amazonUrl(product)}" target="_blank" rel="sponsored nofollow noopener" aria-label="View ${product.name} on Amazon.com"><img src="${product.image}" alt="" loading="lazy" decoding="async"></a>`;
 }
 
 function selectionReason(product, best, choices, candidateCount, isAlternative = false) {
@@ -102,6 +111,7 @@ function productCard(product, best = false, choices = {parking: true}, candidate
   const displayName = productName.replace("VIOFO ", "");
   const parkingNote = choices.parking ? product.parking : "You did not prioritize off-engine recording. Add a hardwire kit only if you later decide you want parking surveillance, and confirm model compatibility.";
   return `<article class="product-card${best ? " is-best" : ""}">
+    ${productPhoto(product, "result-product-photo")}
     <div class="product-card-top"><span class="product-badge">${product.short}</span><span class="camera-mini" aria-hidden="true"></span></div>
     <p class="channels-label">${product.category === "front" ? "1 channel · front" : product.cabin ? "3 channels · front, rear, cabin" : "2 channels · front and rear"}</p>
     <h4>${displayName}</h4>

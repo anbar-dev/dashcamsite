@@ -51,6 +51,18 @@ Focused local checks after the correction:
 
 No exact Amazon.com listing, current price, stock level, or commission attribution was verified by these local destination checks. The earlier external-market search result is superseded and supplies no U.S. availability evidence. Guide bands are approximate editorial filters, not currency conversions or live offer prices.
 
+## Product imagery — October 2, 2026
+
+Added Amazon-hosted product images for all five configurations to the homepage quick picks and selector recommendations, the comparison guide, and the parking-mode table. The front/rear starting recommendation also shows its product photo. Each image links to the same tagged Amazon.com search destination as its existing product buttons. The source listing ASIN is documented in `PRODUCT-SOURCES.md`; exact bundle purchase links remain unchanged.
+
+Updated `transparency.html` to say product images are requested from Amazon when displayed. The images are loaded directly from Amazon's CDN, so this feature depends on the external images remaining available. Reviewed the Amazon product-page title, main image, and model match for each source listing.
+
+Focused local render and load checks after the image changes:
+
+- The homepage and quick-pick photos rendered at 1440 px. All five source images loaded in the parking guide; the photo links use the expected Amazon.com search destination with `dacam93-20`.
+- Checked the comparison guide at desktop width and the homepage quick-pick row at 390 px. The homepage image row had no page-wide horizontal overflow (`scrollWidth: 375`, viewport: `390`); the five-photo parking table also had no overflow at 1440 px.
+- The images load directly from `m.media-amazon.com`. They depend on Amazon's image CDN and a network connection; no local image copies or broken-image placeholders were added.
+
 ## Remaining limits for publication
 
 The site serves an English-reading audience shopping on Amazon.com with USD guide bands, as explicitly required by the user. It has a five-configuration shortlist, specification-based ordering, and search destinations; it does not offer original footage or verified current bundle prices. Preserve those qualifications when publishing.

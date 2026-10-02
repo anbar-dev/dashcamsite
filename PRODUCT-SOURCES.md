@@ -35,6 +35,20 @@ The use cases in the comparison are editorial recommendations based on the verif
 
 Marketplace base URL, associate tag, optional ASIN field, and search terms are maintained in `assets/site.js`. Homepage and comparison links carry product IDs and receive their tracked URL from that catalog. Static `href` search fallbacks omit the tag and remain usable when JavaScript is unavailable.
 
+## Product image sources
+
+**Checked:** October 2, 2026 · **Source:** Amazon.com product pages and their Amazon image CDN main images. Each image is linked to the site's existing tagged Amazon.com search destination. The ASINs below identify the image-source listings only; they have **not** been added as product-detail destinations. Bundle photos can include accessories that are not included in every offer, so the site keeps its listing-check note and does not promise matching box contents.
+
+| Configuration pictured | Amazon image-source listing | CDN image used |
+| --- | --- | --- |
+| VIOFO A119 Mini 2 | [B0C5MVB7NX](https://www.amazon.com/dp/B0C5MVB7NX) | `713pqThfwnL` |
+| VIOFO A229 Plus 2CH | [B0CKX14L34](https://www.amazon.com/dp/B0CKX14L34) | `71rtcpbZU-L` |
+| 70mai A510 front + rear | [B0D6C59PZ9](https://www.amazon.com/dp/B0D6C59PZ9) | `71P0+9q3SDL` |
+| VIOFO A229 Plus 3CH | [B0CKX9NX3D](https://www.amazon.com/dp/B0CKX9NX3D) | `71st-hNqVML` |
+| VIOFO A229 Pro 2CH | [B0CKYFSKNN](https://www.amazon.com/dp/B0CKYFSKNN) | `717rmTFtSNL` |
+
+Image URLs are stored beside each product entry in `assets/site.js`; the homepage, selector, comparison guide, and parking guide use Amazon's remote image CDN. These images are not locally copied assets. `transparency.html` explains that viewing a page requests the images from Amazon.
+
 ## Visitor review follow-up
 
 **Original check:** October 2, 2026, Step 10. The A229 Plus 2CH affiliate search opened successfully before the market correction. That earlier result does not verify an Amazon.com offer, price, package, or commission attribution; no ASIN was added. The current destination checks are recorded in [REVIEW.md](REVIEW.md).

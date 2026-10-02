@@ -246,6 +246,31 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .quick-start-link span { margin-left: 4px; }
 .quick-start-secondary { margin-top: 7px; color: var(--green); font-size: 11px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .quick-start-card small { margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.product-photo-link {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #d2dee3;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #e7eff2, #fbfcfd 68%);
+  transition: border-color .18s ease, transform .18s ease;
+}
+.product-photo-link:hover { border-color: #7ca7a6; transform: translateY(-1px); }
+.product-photo-link:focus-visible { outline: 3px solid #bf7b20; outline-offset: 3px; }
+.product-photo-link img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.hero-product-photo { height: 148px; margin: 11px 0 15px; padding: 8px; }
+.quick-start-photo { height: 126px; margin-bottom: 14px; padding: 8px; }
+.result-product-photo { height: 152px; margin-bottom: 13px; padding: 8px; }
+.guide-product-photo { width: min(100%, 480px); height: 230px; margin: 14px 0; padding: 12px; }
+.parking-table-photo { width: 78px; height: 60px; margin-bottom: 7px; padding: 3px; }
+.parking-table-photo img { mix-blend-mode: multiply; }
+.comparison-table .parking-camera { font-weight: 800; }
+@media(max-width:700px) {
+  .hero-product-photo { height: 132px; }
+  .quick-start-photo { height: 145px; }
+  .result-product-photo { height: 178px; }
+  .guide-product-photo { height: 190px; }
+}
 @media(max-width:950px) {
   .hero.hero-answer { grid-template-columns: minmax(0,1fr) minmax(285px,.9fr); gap: 25px; padding-block: 32px 25px; }
   .hero-answer h1 { font-size: clamp(37px,5vw,48px); }

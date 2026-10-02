@@ -17,7 +17,7 @@ See [ROADMAP.md](ROADMAP.md) for the prioritized steps following the desktop and
 1. **Small site structure:** homepage, model comparison, parking-mode guide, and transparency page; shared styles and selector data in `assets/`.
 2. **Answer-first homepage:** selector for budget, coverage (front, dual, or cabin), vehicle type, night-video priority, and parking mode; recommendations link directly to Amazon.
 3. **A few useful guides:** comparison table for trade-offs and a practical guide to off-engine power.
-4. **Product selection:** five VIOFO and 70mai configurations based on manufacturers’ published specifications. No live prices or Amazon product images; the Amazon listing is where visitors check current prices and bundles.
+4. **Product selection:** five VIOFO and 70mai configurations based on manufacturers’ published specifications. Amazon-hosted product images make the models easier to recognize; live prices and bundles remain on the Amazon listing.
 5. **Affiliate links:** tracking ID `dacam93-20`, affiliate links labeled near calls to action, and the Amazon disclosure in the footer and on the transparency page.
 6. **Essential technical SEO:** page titles and descriptions, canonical URLs on the custom domain, sitemap, robots.txt, English language metadata, and a 404 page.
 7. **Publishing:** push the repository root to GitHub, enable Pages from the main branch, verify and connect `dashcamgator.com`, update DNS, enable HTTPS, then review links and mobile layout.
@@ -31,7 +31,8 @@ See [ROADMAP.md](ROADMAP.md) for the prioritized steps following the desktop and
 - Update specifications after checking the manufacturer's product page or manual. The selector's budget levels are editorial filters, not current prices.
 - Amazon buttons in `index.html` and `compare.html` use `data-amazon-product` IDs. `assets/site.js` resolves those IDs through the product catalog and builds the active destination with `URLSearchParams`; update `AMAZON_MARKETPLACE`, `AMAZON_TAG`, and the relevant product entry there. HTML `href` values are untagged search fallbacks for visitors without JavaScript.
 - Set a product's `asin` only after confirming the exact Amazon.com detail page and its channel configuration. Keep `asin: null` and the labeled search fallback when a matching listing is not verified; do not guess ASINs or equate different bundles.
-- Do not add fixed Amazon prices or copied product images. Visitors should confirm the exact configuration on the linked listing.
+- Do not add fixed Amazon prices. Amazon-hosted images for the five models are referenced in `assets/site.js` and documented in `PRODUCT-SOURCES.md`; update the image URL and source listing when changing a model. Visitors should confirm the exact configuration on the linked listing.
+- Product photos use Amazon image CDN URLs and link to the existing tagged Amazon.com search destination. They are requested remotely; keep the Amazon image-data note in `transparency.html` accurate if image hosting changes.
 - Keep all public-facing copy and page metadata in English. Set each HTML document to `<html lang="en">` and update the English meta description when a page changes.
 - The homepage's fast picks and lead recommendation live in `index.html`; keep their reasons and trade-offs aligned with `PRODUCT-SOURCES.md` and the comparison page when specifications change.
 

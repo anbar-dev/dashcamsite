@@ -2,9 +2,15 @@
 
 Static English-language website for helping drivers choose a dash cam. Built with plain HTML, CSS, and JavaScript; no framework, build step, or backend.
 
+## Confirmed market
+
+The user explicitly requires **United States / Amazon.com / USD ($)**. All purchase links, including static no-JavaScript fallbacks, must point to Amazon.com. Use the supplied associate tag **`dacam93-20`**. Keep editorial copy, generated selector text, metadata, and maintenance documents in English. The operator's location does not determine the shopping marketplace.
+
+Budget bands of about $150, $250, and $350 are editorial camera-bundle guides, not currency conversions or verified live Amazon prices. Check U.S. bundle/channel contents before adding an exact ASIN; previous checks made before the market correction do not establish U.S. availability.
+
 ## Improvement roadmap
 
-See [ROADMAP.md](ROADMAP.md) for the prioritized steps following the desktop and mobile review. Steps 01–04 are complete; steps 05–11 remain pending. Execute only the step assigned by the user.
+See [ROADMAP.md](ROADMAP.md) for the prioritized steps following the desktop and mobile review. Steps 01–10 are complete; step 11 remains pending. Execute only the step assigned by the user. The latest visitor checks, repairs, and review limits are recorded in [REVIEW.md](REVIEW.md).
 
 ## Initial build roadmap
 
@@ -18,11 +24,16 @@ See [ROADMAP.md](ROADMAP.md) for the prioritized steps following the desktop and
 
 ## Updating products and affiliate links
 
-- Models, selector rules, and Amazon search terms are near the top of `assets/site.js`.
+- Models, selector rules, Amazon search terms, marketplace base URL, tracking tag, and optional exact ASIN destinations are near the top of `assets/site.js`.
+- The selector treats requested camera coverage as mandatory. It filters by that first, then applies the bundle-budget guide; if no exact-coverage pick fits, it labels above-budget matches and separates reduced-coverage options. Video ordering is based on published resolution/HDR specifications, not footage tests.
+- Vehicle and parking answers produce model-specific installation or power advice. Keep those notes current with manufacturer compatibility sources.
+- Keep [PRODUCT-SOURCES.md](PRODUCT-SOURCES.md) current when changing the shortlist. It records specification sources, review date, bundle caveats, and the limits of marketplace checks.
 - Update specifications after checking the manufacturer's product page or manual. The selector's budget levels are editorial filters, not current prices.
-- If you change the marketplace or tracking ID, update the hard-coded Amazon links in `compare.html` and the disclosure on every page.
+- Amazon buttons in `index.html` and `compare.html` use `data-amazon-product` IDs. `assets/site.js` resolves those IDs through the product catalog and builds the active destination with `URLSearchParams`; update `AMAZON_MARKETPLACE`, `AMAZON_TAG`, and the relevant product entry there. HTML `href` values are untagged search fallbacks for visitors without JavaScript.
+- Set a product's `asin` only after confirming the exact Amazon.com detail page and its channel configuration. Keep `asin: null` and the labeled search fallback when a matching listing is not verified; do not guess ASINs or equate different bundles.
 - Do not add fixed Amazon prices or copied product images. Visitors should confirm the exact configuration on the linked listing.
 - Keep all public-facing copy and page metadata in English. Set each HTML document to `<html lang="en">` and update the English meta description when a page changes.
+- The homepage's fast picks and lead recommendation live in `index.html`; keep their reasons and trade-offs aligned with `PRODUCT-SOURCES.md` and the comparison page when specifications change.
 
 ## Visual system
 
@@ -42,6 +53,7 @@ See [ROADMAP.md](ROADMAP.md) for the prioritized steps following the desktop and
 ## Main files
 
 - `ROADMAP.md` — pending improvement steps, dependencies, and completion criteria.
+- `REVIEW.md` — dated visitor journeys, checks, repaired defects, and publication limits.
 - `index.html` — homepage and quick selector.
 - `compare.html` — comparison table, trade-offs, and technical sources.
 - `parking-mode.html` — guide to recording while parked.

@@ -4,9 +4,11 @@ Created after the desktop and mobile review on October 2, 2026.
 
 ## How to use this plan
 
-All implementation steps below are **pending**. Creating this document does not authorize their execution. Complete only the step explicitly assigned by the user, report the result, and wait for the next assignment. A request for a step includes its relevant checks; it does not include later steps or publication.
+Each step's status below records whether it has been completed or remains pending. Creating this document does not authorize execution. Complete only the step explicitly assigned by the user, report the result, and wait for the next assignment. A request for a step includes its relevant checks; it does not include later steps or publication.
 
 Keep the website and its maintenance documents in English. Continue using plain HTML, CSS, and JavaScript with GitHub Pages. Preserve the automotive/tech visual direction and a small, maintainable page count.
+
+**Confirmed shopping market:** United States, Amazon.com, USD ($), associate tag `dacam93-20`, explicitly required by the user. This replaces the earlier inferred regional setup. Keep static fallback links and generated links on Amazon.com; earlier marketplace checks do not verify U.S. offers.
 
 The order below resolves usability issues first, then establishes the market and product evidence before refining recommendations and purchase links.
 
@@ -48,7 +50,7 @@ The order below resolves usability issues first, then establishes the market and
 
 **Status:** Complete — October 2, 2026. **Dependencies:** None; complete before Steps 05–09.
 
-- Primary-market default: Italy, inferred from the existing Amazon.it links, euro ranges, and supplied `dacam93-20` tag. Keep the editorial site in English. Confirm the audience choice with the user if there is a reason to change it.
+- Primary market: United States / Amazon.com, explicitly confirmed by the user. Use USD guide budgets and keep the editorial site in English.
 - Align the website's country wording, currency, Amazon destination, and supplied Associates tracking ID. Do not assume `dacam93-20` is enrolled in a different marketplace; account enrollment cannot be checked from the static project.
 - Budget definition: camera bundle only. State beside the selector that separately purchased storage and parking power are extra, and remind readers to check included items.
 - For an international scope, define a small, maintainable country-selection approach before implementing it. Add only marketplaces with confirmed affiliate configuration.
@@ -57,7 +59,7 @@ The order below resolves usability issues first, then establishes the market and
 
 ## Step 05 — Audit the product shortlist and specifications
 
-**Status:** Pending. **Dependencies:** Step 04.
+**Status:** Complete — October 2, 2026. **Dependencies:** Step 04.
 
 - Review the existing five configurations against current manufacturer pages and manuals, plus availability in the chosen market.
 - Retain a deliberately small shortlist and document why each configuration earns a place. Add or replace models only to fill a demonstrated use-case gap.
@@ -67,22 +69,26 @@ The order below resolves usability issues first, then establishes the market and
 
 **Done when:** Each listed configuration has traceable sources, clear accessory requirements, and a defensible budget classification. Conflicting specifications are resolved or clearly qualified. Update dates reflect actual review work.
 
+Audit detail: see [PRODUCT-SOURCES.md](PRODUCT-SOURCES.md) for dated manufacturer sources and the per-model specification record. Current Amazon.com stock, exact bundles, and offer prices remain listing-specific; the site uses labeled search destinations and USD camera-bundle guide bands. Earlier marketplace results are not evidence of U.S. availability. Recheck exact U.S. listings before adding ASINs or revising the bands.
+
 ## Step 06 — Make recommendation rules consistent and explainable
 
-**Status:** Pending. **Dependencies:** Steps 03–05.
+**Status:** Complete — October 2, 2026. **Dependencies:** Steps 03–05.
 
 - Treat requested front/rear/cabin coverage as a requirement. Do not mix incompatible configurations into normal matching results.
 - Handle no-match cases explicitly: show matching coverage above the budget as such, and put reduced-coverage alternatives in a separately labeled area.
-- Correct the reproduced case where a €150 cabin request also returns front-only and front/rear cameras without distinguishing the coverage compromises.
+- Keep the $150 cabin request's matching 3CH option explicitly above budget, and distinguish any lower-coverage alternatives.
 - Base video-priority ordering on documented criteria. Explain why the first option is ranked first without claiming unperformed comparative tests.
 - Make vehicle and parking answers affect concrete advice or suitability. Do not let a vehicle category silently override requested coverage.
 - Support a single useful match without padding the result list. Explain the shortlist's limits when a quality-first choice has no additional candidates.
 
 **Done when:** Representative combinations of budget, coverage, vehicle, video priority, and parking produce understandable results. No normal result violates the coverage requirement; every budget or coverage compromise is explicit.
 
+The implementation contract in `assets/site.js` is: filter to exact requested coverage, then separate within-band candidates from above-band candidates; only when no exact-coverage candidate is within band, show reduced-coverage alternatives in their own labeled section. Video ordering uses documented resolution/HDR features. Vehicle choice changes installation/privacy advice, and parking choice changes power advice without overriding coverage.
+
 ## Step 07 — Write decision-focused comparisons and guides
 
-**Status:** Pending. **Dependencies:** Steps 05–06.
+**Status:** Complete — October 2, 2026. **Dependencies:** Steps 05–06.
 
 - Give each model a short “choose this if,” “skip this if,” and “what you give up” explanation.
 - Explain the practical differences between the A229 Plus and Pro, and give the 70mai configuration a concrete role instead of describing a “different specification mix.”
@@ -93,9 +99,11 @@ The order below resolves usability issues first, then establishes the market and
 
 **Done when:** A reader can explain why one option suits them better than another without opening Amazon. An informed visitor can trace important claims and distinguish specifications, external testing, and editorial opinion.
 
+The comparison now states model-specific choose/skip/trade-offs, CPL/accessory and power differences, heat-related design notes, and the A229 Plus-versus-Pro decision. External test references are attributed and clearly separated from the site's own untested editorial recommendations. The parking guide includes a model/kit matrix and direct links to product and manual sources.
+
 ## Step 08 — Improve the homepage for visitors arriving from Reddit
 
-**Status:** Pending. **Dependencies:** Steps 01–03 and 06–07.
+**Status:** Complete — October 2, 2026. **Dependencies:** Steps 01–03 and 06–07.
 
 - Put a concise, qualified recommendation and an obvious route to the selector near the top, including on mobile.
 - Present a few fast starting points tied to common requests: budget, front/rear, parking, and cabin coverage, using the audited shortlist.
@@ -105,21 +113,25 @@ The order below resolves usability issues first, then establishes the market and
 
 **Done when:** A new visitor can quickly identify a relevant option, understand its main compromise, and reach its purchase link or a useful comparison. The mobile first screen communicates the site's value and next action clearly.
 
+The old large decorative camera/road illustration has been removed from the opening viewport. The hero now gives one qualified front/rear starting point and direct Amazon and selector actions. Four concise quick picks cover front-only budget, everyday front/rear, parking power, and cabin recording, with the main trade-off and direct destination visible for each.
+
 ## Step 09 — Improve Amazon destinations and link maintenance
 
-**Status:** Pending. **Dependencies:** Steps 04–05 and 07–08.
+**Status:** Complete, October 2, 2026. **Dependencies:** Steps 04–05 and 07–08.
 
-- Replace search destinations with verified product-detail links for the exact configuration where suitable listings are available.
-- Confirm channel count, included accessories, and marketplace before attaching an affiliate link. Do not invent ASINs or treat different bundles as interchangeable.
-- Centralize product destinations and tracking configuration to avoid inconsistent links across the homepage, selector, and comparison page.
-- Label any necessary search fallback honestly, and check that tracking parameters survive URL construction.
+- Check whether verified Amazon.com product-detail destinations are available for each exact configuration; retain the search fallback when a matching bundle cannot be confirmed.
+- Confirm channel count, included accessories, and marketplace before attaching a product-detail affiliate link. Do not invent ASINs or treat different bundles as interchangeable.
+- Centralize product destinations and tracking configuration so homepage, selector, and comparison links resolve through the catalog in `assets/site.js`.
+- Label search fallbacks honestly, and construct affiliate parameters with `URLSearchParams`.
 - Keep disclosures near relevant links and use the selected program's verified requirements. Do not introduce copied Amazon images or fixed price claims without an authorized, maintainable method.
 
 **Done when:** Purchase buttons clearly identify their destination and open the intended model/configuration where verified. Affiliate configuration is consistent and documented. Link checking does not require making a purchase.
 
+**Completion record:** Product IDs on homepage and comparison links resolve through the shared catalog and `URLSearchParams` tracking builder. The original work left ASINs unset because exact offers were not verified. After the user's explicit market correction, all active and fallback destinations use Amazon.com with USD guide budgets; bundle/channel caveats stay beside the calls to action. See the correction record below and [PRODUCT-SOURCES.md](PRODUCT-SOURCES.md) for the current verification limits.
+
 ## Step 10 — Perform the complete visitor review again
 
-**Status:** Pending. **Dependencies:** Steps 01–09.
+**Status:** Complete — October 2, 2026. **Dependencies:** Steps 01–09.
 
 - Repeat the Reddit-arrival journey as both a first-time buyer and an informed dash-cam user.
 - Check desktop and narrow mobile layouts, text contrast and size, keyboard access, menu behavior, selector results, and comparison scrolling.
@@ -128,6 +140,8 @@ The order below resolves usability issues first, then establishes the market and
 - Record findings and resolve remaining blocking defects before declaring the site ready for publication. Do not infer conversion rates or user preference from this review alone.
 
 **Done when:** The known failures are resolved, the selected journeys work, and a short review record describes what was checked and any remaining limitations.
+
+Review detail: [REVIEW.md](REVIEW.md) records the visitor journeys, 40 page/width checks, nine selector cases, keyboard/navigation checks, Amazon destination sample, source links, metadata, and repaired defects. Step 11 remains pending.
 
 ## Step 11 — Prepare and publish through GitHub Pages
 
@@ -147,4 +161,11 @@ When a step is assigned and completed, update its status and record the date, ch
 - **Step 01 — Complete, October 2, 2026.** Updated theme tokens, heading/link contrast, product and disclosure type sizes, the generated result badge, and 404 heading scope in `assets/site.css` and `404.html`. Checked the homepage, comparison, parking guide, transparency page, and 404 at 1440 px and 390 px. Confirmed guide headings are white on dark headers; ordinary article links are teal on light backgrounds; the homepage night-guide link is lime on its dark panel; the result badge reads “Closest match”; product detail text is 12 px and affiliate notes are at least 11 px. The page-wide comparison overflow remains for Step 02.
 - **Step 02 — Complete, October 2, 2026.** Made the comparison table scroll inside its own labeled, keyboard-focusable region, added a narrow-screen scroll cue, let the article grid shrink, wrapped long source URLs, and reduced the transparency page's long heading responsively in `compare.html` and `assets/site.css`. Checked all five pages at 360, 390, and 430 px with no page-wide horizontal overflow, then checked the comparison and navigation across desktop and tablet widths. Scrolling the comparison table stayed inside its container (`scrollLeft` 400; page horizontal scroll 0). No additional market or product decisions were made.
 - **Step 03 — Complete, October 2, 2026.** Updated the menu behavior and selector copy in `assets/site.js` and `index.html`, with sticky-header result spacing and an open-state style in `assets/site.css`. At 390 px, checked open/close state, Escape with focus restoration, Tab/Enter navigation, same-page anchor navigation, and a link to the comparison page; resizing an open menu to 1280 px closed it and returned to a collapsed mobile state. Changing a visible answer updated the recommendation without changing scroll position; the action button scrolled the result heading to 100 px from the viewport top, below the 68 px mobile header. The reduced-motion path is wired to `prefers-reduced-motion` and the existing CSS rule; this preview used the default motion preference. Browser console logs were empty.
-- **Step 04 — Complete, October 2, 2026.** Recorded Italy as the operational market based on the existing Amazon.it links, euro bands, and supplied `dacam93-20` tag; this is an inference from the current setup, not an explicit audience confirmation. Kept all editorial copy in English and added an English market/currency and camera-bundle-only budget note beside the homepage selector in `index.html` and `assets/site.css`. Checked the note at 390 px and 1280 px with no horizontal page overflow; existing recommendation links still resolve to Amazon.it. Separately purchased microSD storage and parking power are outside the budget band. Reviewed the current official program agreements: Amazon.it publishes an Italian associate statement or a permitted substantially similar statement; the site's existing English sentence expresses the same meaning. Treat that language equivalence as an interpretation and recheck it in the Associates account before publication. The Amazon.com guidance says international attribution requires OneLink/store configuration; no non-Italian marketplace was added, and this static project cannot verify account enrollment. References: [Amazon.it Operating Agreement](https://programma-affiliazione.amazon.it/help/operating/agreement), [Amazon.com Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement/), and [Amazon OneLink guidance](https://affiliate-program.amazon.com/help/node/topic/GAGAL4V362SH7EC5).
+- **Step 04 — Complete, corrected October 2, 2026.** The original inferred regional market was wrong. The user explicitly confirmed United States / Amazon.com. Updated purchase destinations, country/currency wording, and guide bands to USD in the site and maintenance documents while preserving `dacam93-20`. Budget bands cover the camera bundle; separately purchased microSD and parking power are extra. The site's English associate disclosure matches the statement in the [Amazon.com Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement/). The static project cannot confirm account enrollment or commission credit.
+- **Step 05 — Complete, October 2, 2026.** Audited all five configurations against official product pages and manuals, corrected the A119 Mini 2 and A229 Plus HDR/frame-rate combinations, clarified all-channel resolutions, sensors, storage capacities, power storage, and compatible optional parking kits in `assets/site.js` and `compare.html`, and added the dated [PRODUCT-SOURCES.md](PRODUCT-SOURCES.md) ledger. Kept the five-model shortlist: each configuration covers a distinct front-only, 2CH value, 2CH balanced, cabin, or 4K-front need. Budget tiers remain approximate camera-bundle guides, not current-price claims. The original marketplace checks predated the user's U.S. correction and must not be treated as U.S. availability evidence. No independent image-quality testing was performed. No code tests were run during that specification audit.
+- **Step 06 — Complete, October 2, 2026.** Reworked the selector in `assets/site.js` so front, dual, and cabin requests are hard coverage filters; budget matches, matching models above budget, and reduced-coverage alternatives now appear in distinct states/sections. Removed ranking bumps that let vehicle or parking choices override camera coverage. Added visible reasons for the first-ranked model based on published resolution/HDR features, plus answer-specific cable, cabin/privacy, and parking-power guidance. A single matching model is shown alone and described as the only fit in the reviewed shortlist. Updated `assets/site.css` for the separate recommendation groups and `README.md` with the maintenance contract. Reviewed the scenario flow in code; no automated or browser tests were run.
+- **Step 07 — Complete, October 2, 2026.** Reworked the comparison table and model advice in `compare.html` to give each configuration a clear choose/skip/trade-off, added a direct A229 Plus/Pro decision, and explained CPL, parking, storage, sensor/frame-rate, and heat-design implications. Added a dated external A229 Pro road-test reference while disclosing the reviewer says the unit came from VIOFO and separating that review from DashCamGator's editorial analysis. Reworked `parking-mode.html` with a five-model kit/mode/card matrix, model-specific purchase checks, internal comparison links, and dated official manufacturer/manual sources. No independent footage or lab tests were performed by DashCamGator; no automated or browser tests were run.
+- **Step 08 — Complete, October 2, 2026.** Replaced the homepage's broad introductory hero with a concise, qualified A229 Plus 2CH starting recommendation, clear affiliate and selector actions, and a prominent caveat about the spec-based recommendation in `index.html`. Removed the large generic camera illustration from the opening viewport and added four fast paths for front-only budget, front/rear, parking power, and cabin use, each with its primary trade-off and direct destination. Added responsive homepage-specific rules in `assets/site.css` and maintenance notes in `README.md`. Reviewed the markup and destinations; no browser or automated tests were run.
+
+- **Step 10 — Complete, October 2, 2026.** Repeated first-time and informed Reddit-arrival journeys and recorded the results in REVIEW.md. Fixed the invisible hero purchase text, nested recommendation grids, tiny/low-contrast quick-pick and affiliate text, nested-URL 404 recovery, Pro CTA placement, table link affordances, the broken 70mai PDF source, and the transparency page's form wording in index.html, assets/site.css, compare.html, parking-mode.html, 404.html, transparency.html, and PRODUCT-SOURCES.md. Checked five pages at eight widths (40 combinations), nine selector cases plus vehicle/parking advice, keyboard/menu/scroll behavior, source destinations, English metadata, sitemap/canonicals, JavaScript syntax, and internal file/fragment targets. The original external-market search test predated the U.S. correction; current Amazon.com checks are recorded separately in REVIEW.md. Exact offers and account attribution remain unverified. Public deployment and destination-path configuration remain Step 11.
+- **User-requested market correction — Complete, October 2, 2026.** Set all purchase destinations to Amazon.com, the shopping market to United States, and budget labels to USD while preserving `dacam93-20` and English copy. Updated `assets/site.js`, `index.html`, `compare.html`, `transparency.html`, `README.md`, this roadmap, `PRODUCT-SOURCES.md`, and `REVIEW.md`. Inspected the desktop/mobile homepage, generated selector links, all five comparison destinations, and transparency wording; scanned the source for the previous market and currency. Marked earlier marketplace evidence as superseded. Current U.S. offers and exact ASINs remain unverified, so the labeled search destinations are retained. Step 11 remains pending.

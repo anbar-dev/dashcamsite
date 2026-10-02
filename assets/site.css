@@ -101,7 +101,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   background: #eef3f5;
   box-shadow: 0 12px 35px rgba(20, 42, 53, .045);
 }
-.form-step label { color: #617782; letter-spacing: .25px; }
+.form-step label { color: var(--muted); letter-spacing: .25px; }
 .form-step label span { color: var(--ink); font-family: var(--sans); }
 .form-step select {
   border: 1px solid #b9c8cf;
@@ -114,6 +114,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .parking-toggle { border-color: #c4d2d8; border-radius: 8px; background: #f9fbfc; }
 .toggle-mark { border-color: #8da2aa; }
 .parking-toggle input:checked + .toggle-mark { background: var(--green); border-color: var(--green); }
+.parking-toggle input:focus-visible + .toggle-mark { outline-color: #bf7b20; }
 .form-submit > span { color: var(--muted); }
 .recommendation-head { border-bottom-color: var(--line); }
 .recommendation-head .eyebrow { color: var(--green); }
@@ -129,19 +130,20 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   box-shadow: 0 12px 32px rgba(23, 107, 104, .12);
 }
 .product-badge { border-radius: 4px; background: #e5eef0; color: #355a60; letter-spacing: -.1px; }
-.channels-label { color: #667984; letter-spacing: .15px; }
+.channels-label { color: var(--muted); letter-spacing: .15px; }
 .product-summary { color: #52636e; }
 .spec-pills span { border: 1px solid #d2e1e2; border-radius: 4px; background: #edf5f4; color: #315e5d; }
 .product-extra { border-top-color: #d7e0e4; }
 .product-verdict { border-left-color: var(--lime); background: #f0f5e5; }
 .product-link {
+  font-size: 12px;
   border: 1px solid var(--lime);
   border-radius: 6px;
   background: var(--lime);
   color: #193032;
 }
 .product-link:hover { background: #daf887; border-color: #daf887; }
-.affiliate-note { color: #697a83; }
+.affiliate-note { color: var(--muted); }
 .compare-strip { border: 1px solid #cbd9dc; border-radius: 9px; background: #e7efef; }
 .compare-icon { color: var(--green); }
 .night-section {
@@ -182,15 +184,98 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .comparison-wrap { border-color: #cbd6dc; border-radius: 9px; }
 .comparison-table th { background: #e4eded; color: #264f52; }
 .comparison-table th, .comparison-table td { border-bottom-color: #e0e7ea; }
+.comparison-table a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
 .source-list a { color: var(--green); }
 .pending-info { border-color: #d6a14f; background: #fff5e5; color: #76501b; }
 .product-summary { font-size: 13px; line-height: 1.6; }
 .product-extra p { color: #52636e; font-size: 12px; line-height: 1.6; }
 .product-verdict p { font-size: 12px; line-height: 1.55; }
 .affiliate-note { font-size: 11px; line-height: 1.5; }
+.chooser-context { margin: 0 0 18px; font-size: 12px; }
+.chooser-context span { display: inline-block; margin-top: 7px; color: var(--muted); }
+.recommendation-group > h4 { margin: 0 0 12px; font-family: var(--display); font-size: 19px; font-weight: 600; }
+.coverage-alternatives { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+.coverage-alternatives > p { margin: -4px 0 14px; color: var(--muted); font-size: 12px; }
+
+/* Answer-first homepage for visitors arriving from a recommendation link. */
+.hero.hero-answer {
+  min-height: 0;
+  grid-template-columns: minmax(0, 1.08fr) minmax(330px, .82fr);
+  gap: 40px;
+  padding-block: 38px 34px;
+}
+.hero-answer .hero-copy { max-width: 650px; padding-bottom: 0; }
+.hero-answer h1 { max-width: 650px; font-size: clamp(39px, 4.4vw, 58px); line-height: 1.03; }
+.hero-answer .hero-lead { max-width: 630px; margin-bottom: 19px; font-size: 14px; line-height: 1.65; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.hero-actions .button { padding: 12px 16px; font-size: 11px; }
+.hero-secondary { color: var(--green); font-size: 11px; font-weight: 800; }
+.hero-secondary span { margin-left: 5px; }
+.hero-answer .hero-proof { margin-top: 15px; font-size: 10px; }
+.hero-answer-pick {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 22px 24px;
+  border: 1px solid #b8cbd0;
+  border-left: 4px solid var(--lime);
+  border-radius: 10px;
+  background: #e4eded;
+  box-shadow: 0 14px 36px rgba(20, 42, 53, .08);
+}
+.hero-answer-pick .hero-pick-title { margin: 11px 0 8px; color: var(--ink); font-size: 18px; line-height: 1.3; }
+.hero-answer-pick > p:not(.hero-pick-title) { margin: 0 0 12px; color: var(--ink); font-size: 14px; font-weight: 800; line-height: 1.55; }
+.hero-answer-pick > p > span { color: var(--muted); font-size: 11px; font-weight: 600; }
+.hero-answer-pick .hero-pick-tradeoff { color: #52636e!important; font-size: 11px!important; font-weight: 500!important; }
+.hero-answer-pick .button { width: 100%; justify-content: space-between; padding: 12px 13px; font-size: 11px; }
+.hero-answer-pick .button-green { color: var(--white); }
+.hero-answer-pick small { margin-top: 8px; font-size: 9px; line-height: 1.5; }
+.quick-starts { padding-block: 23px 68px; }
+.quick-starts-heading { display: flex; align-items: end; gap: 17px; margin-bottom: 17px; }
+.quick-starts-heading .eyebrow { margin: 0 0 7px; }
+.quick-starts-heading h2 { margin: 0; font-family: var(--display); font-size: 25px; font-weight: 600; letter-spacing: -.5px; }
+.quick-starts-heading > a { margin-left: auto; color: var(--green); font-size: 10px; font-weight: 800; white-space: nowrap; }
+.quick-start-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+.quick-start-card { display: flex; flex-direction: column; min-height: 260px; padding: 17px 16px 15px; border: 1px solid var(--line); border-radius: 9px; background: var(--white); }
+.quick-start-kicker { color: var(--green); font-family: var(--mono); font-size: 9px; font-weight: 800; letter-spacing: .35px; }
+.quick-start-card h3 { margin: 9px 0 7px; font-family: var(--display); font-size: 19px; font-weight: 600; line-height: 1.2; }
+.quick-start-card p { margin: 0 0 9px; color: #52636e; font-size: 13px; line-height: 1.55; }
+.quick-start-card p strong { color: var(--ink); }
+.quick-start-card .quick-start-tradeoff { margin-bottom: 13px; color: #53696d; font-size: 12px; }
+.quick-start-link { margin-top: auto; padding-top: 11px; border-top: 1px solid #d7e0e4; color: var(--green); font-size: 12px; font-weight: 800; line-height: 1.45; }
+.quick-start-link span { margin-left: 4px; }
+.quick-start-secondary { margin-top: 7px; color: var(--green); font-size: 11px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.quick-start-card small { margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+@media(max-width:950px) {
+  .hero.hero-answer { grid-template-columns: minmax(0,1fr) minmax(285px,.9fr); gap: 25px; padding-block: 32px 25px; }
+  .hero-answer h1 { font-size: clamp(37px,5vw,48px); }
+  .hero-answer-pick { padding: 18px; }
+  .quick-start-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .quick-start-card { min-height: 235px; }
+}
+@media(max-width:700px) {
+  .hero.hero-answer { grid-template-columns: 1fr; gap: 15px; padding-block: 27px 18px; }
+  .hero-answer h1 { max-width: 540px; margin-bottom: 12px; font-size: clamp(37px,10vw,44px); }
+  .hero-answer .hero-lead { margin-bottom: 14px; font-size: 13px; }
+  .hero-actions { gap: 10px 13px; }
+  .hero-actions .button { padding: 11px 13px; }
+  .hero-answer .hero-proof { margin-top: 11px; font-size: 9px; }
+  .hero-answer-pick { padding: 16px; }
+  .hero-answer-pick .hero-pick-title { margin-top: 7px; font-size: 16px; }
+  .hero-answer-pick > p:not(.hero-pick-title) { font-size: 12px; }
+  .quick-starts { padding-block: 19px 48px; }
+  .quick-starts-heading { display: block; }
+  .quick-starts-heading h2 { font-size: 23px; }
+  .quick-starts-heading > a { display: inline-block; margin: 8px 0 0; }
+  .quick-start-grid { grid-template-columns: 1fr; gap: 9px; }
+  .quick-start-card { min-height: 0; padding: 14px; }
+  .quick-start-card h3 { font-size: 17px; }
+  .quick-start-card p { font-size: 13px; }
+  .quick-start-link { margin-top: 2px; }
+}
 .form-step small { font-size: 11px; line-height: 1.5; }
 .form-submit > span { font-size: 11px; }
-.hero-pick small { font-size: 10px; line-height: 1.5; }
+.hero-pick small { color: var(--muted); font-size: 11px; line-height: 1.5; }
 .proof-note, .quick-proof small, .footer-disclosure, .footer-bottom { font-size: 11px; }
 .channels-label, .product-badge { font-size: 10px; }
 

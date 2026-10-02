@@ -26,13 +26,14 @@ See [ROADMAP.md](ROADMAP.md) for the prioritized steps following the desktop and
 
 - Models, selector rules, Amazon search terms, marketplace base URL, tracking tag, and optional exact ASIN destinations are near the top of `assets/site.js`.
 - The selector treats requested camera coverage as mandatory. It filters by that first, then applies the bundle-budget guide; if no exact-coverage pick fits, it labels above-budget matches and separates reduced-coverage options. Video ordering is based on published resolution/HDR specifications, not footage tests.
-- Vehicle and parking answers produce model-specific installation or power advice. Keep those notes current with manufacturer compatibility sources.
+- Vehicle and parking answers produce model-specific installation or power advice. `vehicleAdvice()` combines the chosen vehicle with the model's coverage; do not hard-code a vehicle category into a product card. Keep power notes current with manufacturer compatibility sources.
 - Keep [PRODUCT-SOURCES.md](PRODUCT-SOURCES.md) current when changing the shortlist. It records specification sources, review date, bundle caveats, and the limits of marketplace checks.
 - Update specifications after checking the manufacturer's product page or manual. The selector's budget levels are editorial filters, not current prices.
-- Amazon buttons in `index.html` and `compare.html` use `data-amazon-product` IDs. `assets/site.js` resolves those IDs through the product catalog and builds the active destination with `URLSearchParams`; update `AMAZON_MARKETPLACE`, `AMAZON_TAG`, and the relevant product entry there. HTML `href` values are untagged search fallbacks for visitors without JavaScript.
+- Amazon photo links and buttons use `data-amazon-product` IDs. `assets/site.js` resolves those IDs through the product catalog and builds the active destination with `URLSearchParams`; update `AMAZON_MARKETPLACE`, `AMAZON_TAG`, and the relevant product entry there. HTML `href` values are tagged Amazon.com search fallbacks for visitors without JavaScript; keep their query and `tag=dacam93-20` aligned with the catalog.
 - Set a product's `asin` only after confirming the exact Amazon.com detail page and its channel configuration. Keep `asin: null` and the labeled search fallback when a matching listing is not verified; do not guess ASINs or equate different bundles.
 - Do not add fixed Amazon prices. Amazon-hosted images for the five models are referenced in `assets/site.js` and documented in `PRODUCT-SOURCES.md`; update the image URL and source listing when changing a model. Visitors should confirm the exact configuration on the linked listing.
 - Product photos use Amazon image CDN URLs and link to the existing tagged Amazon.com search destination. They are requested remotely; keep the Amazon image-data note in `transparency.html` accurate if image hosting changes.
+- Photo containers use flex alignment and `object-fit: contain` so the full product remains visible. A failed image shows the site badge and a short unavailable-photo message while retaining its purchase link. Check both static and generated cards after changing photo styles.
 - Keep all public-facing copy and page metadata in English. Set each HTML document to `<html lang="en">` and update the English meta description when a page changes.
 - The homepage's fast picks and lead recommendation live in `index.html`; keep their reasons and trade-offs aligned with `PRODUCT-SOURCES.md` and the comparison page when specifications change.
 
@@ -41,6 +42,7 @@ See [ROADMAP.md](ROADMAP.md) for the prioritized steps following the desktop and
 - The visual direction is automotive and tech: cool steel backgrounds, graphite and midnight-blue panels, petrol teal, high-visibility lime, and amber signal accents.
 - Keep the display, body, and monospace font stacks in the shared `assets/site.css` theme. They use system fonts, so the site does not depend on a remote font service.
 - Shared component styles live in the same stylesheet; carry them across the homepage, comparison, and guide pages when adding new sections.
+- Site icons extend the header's camera/gator mark: `assets/favicon.svg`, root `favicon.ico` (16/32/48 px), and `assets/apple-touch-icon.png` (180 px). All five HTML pages link to these root paths for the custom-domain deployment. Update all variants together when changing the brand.
 
 ## Publishing with GitHub Pages
 

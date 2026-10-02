@@ -247,8 +247,9 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .quick-start-secondary { margin-top: 7px; color: var(--green); font-size: 11px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .quick-start-card small { margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.5; }
 .product-photo-link {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border: 1px solid #d2dee3;
   border-radius: 8px;
@@ -257,7 +258,13 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 }
 .product-photo-link:hover { border-color: #7ca7a6; transform: translateY(-1px); }
 .product-photo-link:focus-visible { outline: 3px solid #bf7b20; outline-offset: 3px; }
-.product-photo-link img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.product-photo-link img { display: block; min-width: 0; min-height: 0; width: 100%; height: 100%; object-fit: contain; }
+.product-photo-link.is-unavailable { flex-direction: column; gap: 6px; }
+.product-photo-link.is-unavailable img { display: none; }
+.product-photo-link.is-unavailable::before { content: ""; width: 40px; height: 40px; background: url('/assets/favicon.svg') center / contain no-repeat; }
+.product-photo-link.is-unavailable::after { content: "Photo unavailable"; color: var(--muted); font-size: 12px; }
+.parking-table-photo.is-unavailable::before { width: 28px; height: 28px; }
+.parking-table-photo.is-unavailable::after { content: none; }
 .hero-product-photo { height: 148px; margin: 11px 0 15px; padding: 8px; }
 .quick-start-photo { height: 126px; margin-bottom: 14px; padding: 8px; }
 .result-product-photo { height: 152px; margin-bottom: 13px; padding: 8px; }
@@ -270,6 +277,8 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   .quick-start-photo { height: 145px; }
   .result-product-photo { height: 178px; }
   .guide-product-photo { height: 190px; }
+  .hero-secondary, .quick-starts-heading > a, .quick-start-secondary { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; }
+  .quick-start-link { min-height: 44px; }
 }
 @media(max-width:950px) {
   .hero.hero-answer { grid-template-columns: minmax(0,1fr) minmax(285px,.9fr); gap: 25px; padding-block: 32px 25px; }
@@ -291,7 +300,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   .quick-starts { padding-block: 19px 48px; }
   .quick-starts-heading { display: block; }
   .quick-starts-heading h2 { font-size: 23px; }
-  .quick-starts-heading > a { display: inline-block; margin: 8px 0 0; }
+  .quick-starts-heading > a { display: inline-flex; margin: 8px 0 0; }
   .quick-start-grid { grid-template-columns: 1fr; gap: 9px; }
   .quick-start-card { min-height: 0; padding: 14px; }
   .quick-start-card h3 { font-size: 17px; }

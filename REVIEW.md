@@ -46,7 +46,7 @@ Focused local checks after the correction:
 - The homepage at 1440 px displays United States / Amazon.com. All seven rendered purchase links, including the default selector results, use `www.amazon.com` and `tag=dacam93-20`.
 - All five comparison purchase links use `www.amazon.com`, the intended model queries, and the same tag.
 - At 390 px, the selector displays $150 / $250 / $350 guide bands. Changing to the lowest budget and cabin coverage generates Amazon.com links for the cabin match and the separately labeled front-only alternative, both with the tag. The homepage had no page-wide horizontal overflow at either sampled width.
-- The transparency page identifies Amazon.com for affiliate destinations and external data processing. A source scan found no remaining references to the previous marketplace or currency in HTML, JavaScript, or Markdown files. Static fallback purchase URLs also use Amazon.com; their existing untagged behavior is unchanged.
+- The transparency page identifies Amazon.com for affiliate destinations and external data processing. A source scan found no remaining references to the previous marketplace or currency in HTML, JavaScript, or Markdown files. At this stage, static fallback purchase URLs used Amazon.com without a tag; the site-icon follow-up below adds tracking to those fallbacks.
 - Saved updated desktop and mobile homepage previews. These focused checks supplement the original Step 10 review; the full 40 page/width matrix was not repeated.
 
 No exact Amazon.com listing, current price, stock level, or commission attribution was verified by these local destination checks. The earlier external-market search result is superseded and supplies no U.S. availability evidence. Guide bands are approximate editorial filters, not currency conversions or live offer prices.
@@ -61,7 +61,31 @@ Focused local render and load checks after the image changes:
 
 - The homepage and quick-pick photos rendered at 1440 px. All five source images loaded in the parking guide; the photo links use the expected Amazon.com search destination with `dacam93-20`.
 - Checked the comparison guide at desktop width and the homepage quick-pick row at 390 px. The homepage image row had no page-wide horizontal overflow (`scrollWidth: 375`, viewport: `390`); the five-photo parking table also had no overflow at 1440 px.
-- The images load directly from `m.media-amazon.com`. They depend on Amazon's image CDN and a network connection; no local image copies or broken-image placeholders were added.
+- The images load directly from `m.media-amazon.com`. They depend on Amazon's image CDN and a network connection. This initial imagery change added no local copies or broken-image placeholders; the follow-up below adds an unavailable-photo fallback.
+
+## Site icons and critical visitor follow-up — October 2, 2026
+
+Opened the published homepage as a Reddit visitor, then reviewed the corrections in a local static preview. The opening recommendation, quick picks, consistent automotive colors, and clear coverage trade-offs give a new buyer a useful starting point. An informed reader can inspect sources and limitations, but the shortlist remains narrow and the longer guide sections are dense.
+
+Small corrections completed:
+
+- Added the camera/gator site icon in SVG, a 16/32/48 px ICO, and a 180 px Apple touch icon. All five pages include the icon links, including nested 404 recovery.
+- Fixed product photo cropping: the previous grid layout allowed an image's intrinsic height to exceed its fixed-height container. Flex alignment and constrained image dimensions now preserve the complete image on the homepage, generated cards, comparison guide, and parking table.
+- Made each recommendation's vehicle advice follow the compact, larger-vehicle, or work-vehicle answer. Restored the full VIOFO model names in generated headings.
+- Shortened the opening recommendation and changed the comparison headline to “Five configurations. Clear trade-offs.” The specifications-only method remains visible beside the homepage actions and in the guides.
+- Increased the mobile touch area of secondary homepage and quick-pick links. Added a visible unavailable-photo fallback that retains the affiliate destination if Amazon's image fails.
+- Added `dacam93-20` to static Amazon.com URLs, preserving affiliate tracking when JavaScript is unavailable.
+
+Focused confirmation:
+
+- All five pages at 360, 390, 768, and 1440 px: 20 page/width combinations, with no page-wide horizontal overflow, no image boxes extending outside their photo containers, and no incorrect Amazon marketplace/tag destinations.
+- Visually inspected the desktop/mobile homepage, quick picks, comparison, and parking guide; reviewed the transparency page and nested 404 recovery.
+- Checked compact, SUV/van, and work/cabin advice, above-budget cabin results, mobile menu open/Escape/focus behavior, and generated image loading.
+- A temporary missing-image fixture displayed the badge and “Photo unavailable” text while preserving the tagged purchase link; the fixture was removed after inspection.
+- All three icon URLs returned HTTP 200 with the expected image MIME types. The ICO contains valid 16/32/48 px PNG frames and the Apple icon is 180 × 180 px. A source audit confirmed 25 static Amazon URLs each carry the affiliate tag exactly once.
+- The comparison model link finishes below the sticky header. The sampled mobile secondary and quick-pick links have 44 px touch heights; a fresh homepage/selector session produced no browser warnings or errors. JavaScript syntax and Git whitespace checks passed.
+
+This follow-up does not establish live offer prices, exact bundle availability, or actual video performance. The main editorial improvements still require a separate research effort: verified purchase destinations and current budget mapping, a broader shortlist, and attributable footage comparisons. The original full Step 10 audit was not repeated.
 
 ## Remaining limits for publication
 

@@ -8,7 +8,6 @@ const products = [
     good: "Compact windshields, a simpler installation, and a budget focused on front recording.",
     caveat: "2K 60 fps and 2K HDR are separate modes: HDR records at 30 fps. It does not record the rear view; check the bundle for a card and parking power.",
     parking: "Parking modes are available. Recording with the engine off requires a compatible hardwire kit, sold separately.",
-    vehicle: "Its compact body can suit small cars and crowded windshields.",
     search: "VIOFO A119 Mini 2 dash cam", asin: null,
     image: "https://m.media-amazon.com/images/I/713pqThfwnL._AC_SY300_SX300_QL70_FMwebp_.jpg",
     source: "https://www.viofo.com/products/viofo-a119-mini-2-voice-control-2k-60fps-5ghz-wifi-dash-camera-with-sony-starvis-2-image-sensor-hdr-super-night-sensibility"
@@ -20,7 +19,6 @@ const products = [
     good: "A balanced pick for commuting, road trips, and recording both ends of the car.",
     caveat: "Front 60 fps is not the HDR mode: HDR runs at 30 fps on both channels. Check the rear cable, card, and parking-power kit in the bundle.",
     parking: "Supports buffered parking recording. A compatible HK4 kit is required to power the camera with the car off.",
-    vehicle: "For estates, SUVs, or vans, check the rear-camera cable length.",
     search: "VIOFO A229 Plus 2CH front rear dash cam", asin: null,
     image: "https://m.media-amazon.com/images/I/71rtcpbZU-L._AC_SX425_.jpg",
     source: "https://www.viofo.com/products/viofo-a229-plus-2ch-front-and-rear-2k2k-hdr-5ghz-wi-fi-gps-voice-control-dual-dash-camera-with-sony-starvis-2-sensor"
@@ -32,7 +30,6 @@ const products = [
     good: "A lower-cost two-channel route when Full HD rear footage is enough; the front camera records 1944P and offers HDR.",
     caveat: "The rear channel is 1080p at 25 fps and has no HDR. Confirm that the listing is the A510-1 two-camera bundle; the camera has a 500mAh battery, not a supercapacitor.",
     parking: "Offers collision detection and time-lapse. Parking mode requires a compatible 70mai UP03/UP04 hardwire kit, sold separately.",
-    vehicle: "Check that the bundle includes the rear camera and that its cable reaches your back window.",
     search: "70mai A510-1 front rear dash cam", asin: null,
     image: "https://m.media-amazon.com/images/I/71P0+9q3SDL._AC_SY300_SX300_QL70_FMwebp_.jpg",
     source: "https://new-cdn-res.70mai.com/gb/a510/"
@@ -44,7 +41,6 @@ const products = [
     good: "Adds an infrared cabin camera for recording inside the vehicle.",
     caveat: "All three channels record at 30 fps; the cabin camera uses IR for darkness. Three channels use storage quickly, and the card is sold separately.",
     parking: "Supports buffered parking modes. VIOFO lists HK4 as compatible; it is optional, and the camera has a supercapacitor rather than a battery.",
-    vehicle: "Suited to passenger transport or drivers who also need an interior view.",
     search: "VIOFO A229 Plus 3CH dash cam", asin: null,
     image: "https://m.media-amazon.com/images/I/71st-hNqVML._AC_SY300_SX300_QL70_FMwebp_.jpg",
     source: "https://www.viofo.com/products/viofo-a229-plus-3ch-2k2k1080p-hdr-5ghz-wi-fi-gps-voice-control-dash-camera-with-dual-sony-starvis-2-sensor"
@@ -56,7 +52,6 @@ const products = [
     good: "For drivers who prioritize video detail and still want front and rear coverage.",
     caveat: "The larger 4K files need storage planning; more resolution does not guarantee readable plates. The supercapacitor is not a parking-mode power source.",
     parking: "Supports buffered parking modes. VIOFO lists HK4 as compatible; it is optional, and off-engine recording needs a separate power source.",
-    vehicle: "Check the space behind your mirror and cable routing for your car model.",
     search: "VIOFO A229 Pro 2CH 4K 2K dash cam", asin: null,
     image: "https://m.media-amazon.com/images/I/717rmTFtSNL._AC_SX569_.jpg",
     source: "https://www.viofo.com/products/viofo-a229-pro-2ch-front-and-rear-4k-2k-hdr-dual-dash-cam-with-sony-starvis-2-sensors"
@@ -79,6 +74,22 @@ function syncAmazonLinks(root = document) {
 
 function productPhoto(product, className = "") {
   return `<a class="product-photo-link ${className}" data-amazon-product="${product.id}" href="${amazonUrl(product)}" target="_blank" rel="sponsored nofollow noopener" aria-label="View ${product.name} on Amazon.com"><img src="${product.image}" alt="" loading="lazy" decoding="async"></a>`;
+}
+
+function vehicleAdvice(product, choices) {
+  if (choices.vehicle === "large") {
+    return product.category === "front"
+      ? "For your SUV or van, check windshield placement and the power-cable route."
+      : "For your SUV or van, measure the rear-cable route and confirm the listing includes a cable long enough.";
+  }
+  if (choices.vehicle === "work") {
+    return product.cabin
+      ? "Position the cabin camera for the passenger area and explain recording to passengers."
+      : `This records ${product.category === "front" ? "the road ahead" : "front and rear"} in your work vehicle. Choose cabin coverage if you also need passenger footage.`;
+  }
+  return product.category === "front"
+    ? "For your small car, check space near the mirror and keep the camera clear of sightlines and sensors."
+    : "For your small car, check space near the mirror and plan the rear-cable route clear of airbags and sensors.";
 }
 
 function selectionReason(product, best, choices, candidateCount, isAlternative = false) {
@@ -108,7 +119,7 @@ function selectionReason(product, best, choices, candidateCount, isAlternative =
 
 function productCard(product, best = false, choices = {parking: true}, candidateCount = 1, isAlternative = false) {
   const productName = product.name;
-  const displayName = productName.replace("VIOFO ", "");
+  const displayName = productName;
   const parkingNote = choices.parking ? product.parking : "You did not prioritize off-engine recording. Add a hardwire kit only if you later decide you want parking surveillance, and confirm model compatibility.";
   return `<article class="product-card${best ? " is-best" : ""}">
     ${productPhoto(product, "result-product-photo")}
@@ -117,7 +128,7 @@ function productCard(product, best = false, choices = {parking: true}, candidate
     <h4>${displayName}</h4>
     <p class="product-summary">${product.summary}</p>
     <div class="spec-pills"><span>${product.display}</span><span>${product.night.split(" · ")[0]}</span>${product.cabin ? "<span>IR cabin camera</span>" : ""}</div>
-    <div class="product-extra"><p><strong>For your car:</strong> ${product.vehicle}</p><p><strong>Parking:</strong> ${parkingNote}</p><p><strong>Keep in mind:</strong> ${product.caveat}</p></div>
+    <div class="product-extra"><p><strong>For your car:</strong> ${vehicleAdvice(product, choices)}</p><p><strong>Parking:</strong> ${parkingNote}</p><p><strong>Keep in mind:</strong> ${product.caveat}</p></div>
     <div class="product-verdict"><strong>${isAlternative ? "Coverage trade-off" : best ? "Why this ranks first" : "Why consider it"}</strong><p>${selectionReason(product,best,choices,candidateCount,isAlternative)}</p></div>
     <p class="affiliate-note">Amazon affiliate search link · price and bundle may change.</p>
     <a class="product-link" data-amazon-product="${product.id}" href="${amazonUrl(product)}" target="_blank" rel="sponsored nofollow noopener">Search Amazon.com <span aria-hidden="true">↗</span><span class="visually-hidden"> — opens in a new tab</span></a>
@@ -213,6 +224,13 @@ function updateRecommendations() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const showPhotoFallback = image => {
+    if (image instanceof HTMLImageElement) image.closest(".product-photo-link")?.classList.add("is-unavailable");
+  };
+  document.addEventListener("error", event => showPhotoFallback(event.target), true);
+  document.querySelectorAll(".product-photo-link img").forEach(image => {
+    if (image.complete && image.naturalWidth === 0) showPhotoFallback(image);
+  });
   syncAmazonLinks();
   const chooser = document.querySelector("#chooser-form");
   if (chooser) {

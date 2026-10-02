@@ -33,7 +33,7 @@ The use cases in the comparison are editorial recommendations based on the verif
 
 **Corrected:** October 2, 2026 · **Marketplace:** Amazon.com · **Result:** no exact U.S. product-detail ASIN has been independently confirmed for the five configurations. Earlier marketplace research is superseded by the user's U.S. requirement and must not be used as evidence for U.S. listings. The site uses Amazon.com affiliate search results for all five models, labels them as searches, and keeps bundle checks beside the buttons. Confirm 2CH vs. 3CH, rear-camera inclusion, and A510-1 bundle contents on the live listing before purchase. No ASIN is inferred from a similar model or bundle.
 
-Marketplace base URL, associate tag, optional ASIN field, and search terms are maintained in `assets/site.js`. Homepage and comparison links carry product IDs and receive their tracked URL from that catalog. Static `href` search fallbacks omit the tag and remain usable when JavaScript is unavailable.
+Marketplace base URL, associate tag, optional ASIN field, and search terms are maintained in `assets/site.js`. Product buttons and photo links carry product IDs and receive their tracked URL from that catalog. Static `href` search fallbacks also carry `tag=dacam93-20`, including when JavaScript is unavailable. Keep the static queries and tracking tag aligned with the shared catalog.
 
 ## Product image sources
 

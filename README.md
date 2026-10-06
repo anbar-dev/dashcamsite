@@ -43,6 +43,7 @@ See [ROADMAP.md](ROADMAP.md) for the prioritized steps following the desktop and
 - Keep the display, body, and monospace font stacks in the shared `assets/site.css` theme. They use system fonts, so the site does not depend on a remote font service.
 - Shared component styles live in the same stylesheet; carry them across the homepage, comparison, and guide pages when adding new sections.
 - Site icons extend the header's camera/gator mark: `assets/favicon.svg`, root `favicon.ico` (16/32/48 px), and `assets/apple-touch-icon.png` (180 px). All five HTML pages link to these root paths for the custom-domain deployment. Update all variants together when changing the brand.
+- Google Analytics uses the user-supplied measurement ID `G-8QEBQKF536` on all five HTML pages, including the custom 404. The tracking snippet is in each page head; describe the service and its external data processing on `transparency.html` if the measurement ID or tracking changes.
 
 ## Publishing with GitHub Pages
 

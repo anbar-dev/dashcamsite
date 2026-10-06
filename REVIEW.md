@@ -87,6 +87,10 @@ Focused confirmation:
 
 This follow-up does not establish live offer prices, exact bundle availability, or actual video performance. The main editorial improvements still require a separate research effort: verified purchase destinations and current budget mapping, a broader shortlist, and attributable footage comparisons. The original full Step 10 audit was not repeated.
 
+## Google Analytics and sitemap — October 6, 2026
+
+Added the user-supplied Google Analytics tag (`G-8QEBQKF536`) to the head of all five HTML pages, including the custom 404. Updated the transparency page to disclose Google Analytics and that its tag can send technical and usage information to Google under Google's policies. The existing sitemap at `https://dashcamgator.com/sitemap.xml` already listed all four indexable pages; updated their `lastmod` dates. `robots.txt` already referenced the sitemap and needed no change.
+
 ## Remaining limits for publication
 
 The site serves an English-reading audience shopping on Amazon.com with USD guide bands, as explicitly required by the user. It has a five-configuration shortlist, specification-based ordering, and search destinations; it does not offer original footage or verified current bundle prices. Preserve those qualifications when publishing.
